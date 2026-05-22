@@ -1,49 +1,67 @@
-export const TOOL_PLANS = {
-  "ChatGPT": [
-    "Plus",
-    "Team",
-    "Enterprise",
-    "API Direct",
-  ],
+export const TOOL_PRICING = {
 
-  "Claude": [
-    "Free",
-    "Pro",
-    "Max",
-    "Team",
-    "Enterprise",
-    "API Direct",
-  ],
+  "ChatGPT": {
+    plans: {
+      "Plus": 20,
+      "Team": 30,
+      "Enterprise": 60,
+      "API Direct": 100,
+    },
+  },
 
-  "Cursor": [
-    "Hobby",
-    "Pro",
-    "Business",
-    "Enterprise",
-  ],
+  "Claude": {
+    plans: {
+      "Free": 0,
+      "Pro": 20,
+      "Max": 200,
+      "Team": 30,
+      "Enterprise": 80,
+      "API Direct": 120,
+    },
+  },
 
-  "GitHub Copilot": [
-    "Individual",
-    "Business",
-    "Enterprise",
-  ],
+  "Cursor": {
+    plans: {
+      "Hobby": 0,
+      "Pro": 20,
+      "Business": 40,
+      "Enterprise": 80,
+    },
+  },
 
-  "Gemini": [
-    "Pro",
-    "Ultra",
-    "API",
-  ],
+  "GitHub Copilot": {
+    plans: {
+      "Individual": 10,
+      "Business": 19,
+      "Enterprise": 39,
+    },
+  },
 
-  "OpenAI API": [
-    "Pay As You Go",
-  ],
+  "Gemini": {
+    plans: {
+      "Pro": 20,
+      "Ultra": 50,
+      "API": 100,
+    },
+  },
 
-  "Anthropic API": [
-    "Pay As You Go",
-  ],
+  "OpenAI API": {
+    plans: {
+      "Pay As You Go": 100,
+    },
+  },
 
-  "Windsurf": [
-    "Free",
-    "Pro",
-  ],
+  "Anthropic API": {
+    plans: {
+      "Pay As You Go": 120,
+    },
+  },
+
+  "Windsurf": {
+    plans: {
+      "Free": 0,
+      "Pro": 15,
+    },
+  },
+
 };

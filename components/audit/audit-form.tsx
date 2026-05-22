@@ -10,8 +10,7 @@ import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { TOOL_PLANS } from "@/data/pricing";
-
+import { TOOL_PRICING } from "@/data/pricing";
 import {
   Card,
   CardContent,
@@ -184,9 +183,11 @@ export default function AuditForm() {
           watch(`tools.${index}.tool`);
 
         const plans =
-          TOOL_PLANS[
-            selectedTool as keyof typeof TOOL_PLANS
-          ] || [];
+          Object.keys(
+            TOOL_PRICING[
+              selectedTool as keyof typeof TOOL_PRICING
+            ]?.plans || {}
+          );
 
         return (
           <Card
@@ -215,7 +216,7 @@ export default function AuditForm() {
 
                   <SelectContent>
 
-                    {Object.keys(TOOL_PLANS).map(
+                    {Object.keys(TOOL_PRICING).map(
                       (tool) => (
                         <SelectItem
                           key={tool}

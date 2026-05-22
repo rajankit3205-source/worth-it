@@ -1,47 +1,25 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import AuditForm from "@/components/audit/audit-form";
 
 export default function AuditPage() {
   return (
-    <main className="min-h-screen bg-black text-white flex items-center justify-center px-6">
-      
-      <div className="max-w-3xl text-center">
+    <main className="min-h-screen bg-black text-white px-6 py-16">
 
-        <div className="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm text-gray-300 mb-6">
-          AI Spend Audit
-        </div>
+      <div className="max-w-4xl mx-auto">
 
-        <h1 className="text-5xl font-bold tracking-tight leading-tight mb-6">
-          Build Your <br />
-          AI Spend Report
-        </h1>
+        <div className="mb-12 text-center">
 
-        <p className="text-gray-400 text-lg mb-10">
-          Enter your startup’s AI tools, plans, and monthly spend.
-          Worth-It will analyze inefficiencies and identify
-          potential savings opportunities.
-        </p>
+          <h1 className="text-5xl font-bold mb-4">
+            AI Spend Audit
+          </h1>
 
-        <div className="flex justify-center gap-4">
-
-          <Button
-            size="lg"
-            className="rounded-full px-8"
-          >
-            Start Audit
-          </Button>
-
-          <Link href="/">
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 text-black"
-            >
-              Back Home
-            </Button>
-          </Link>
+          <p className="text-gray-400 text-lg">
+            Analyze your AI stack and uncover
+            optimization opportunities instantly.
+          </p>
 
         </div>
+
+        <AuditForm />
 
       </div>
 

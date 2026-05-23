@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { runAudit } from "@/engine/audit-engine";
+import { supabase } from "@/lib/supabase";
 
 type Props = {
   params: Promise<{
@@ -31,23 +31,25 @@ export default function ResultPage({
 
       setId(resolvedParams.id);
 
-      const stored =
-        localStorage.getItem(
-          `audit-${resolvedParams.id}`
-        );
+      const { data, error } =
+        await supabase
+          .from("audits")
+          .select("*")
+          .eq("id", resolvedParams.id)
+          .single();
 
-      if (stored) {
+      if (error) {
 
-        const parsed =
-          JSON.parse(stored);
+        console.error(error);
 
-        setAuditData(parsed);
-
-        const results =
-          runAudit(parsed.tools);
-
-        setAuditResults(results);
+        return;
       }
+
+      setAuditData(data);
+
+      setAuditResults(
+        data.recommendations || []
+      );
     }
 
     loadData();
@@ -131,7 +133,7 @@ export default function ResultPage({
                 </p>
 
                 <h2 className="text-4xl font-bold">
-                  {auditData.teamSize}
+                  {auditData.team_size}
                 </h2>
 
               </div>
@@ -143,7 +145,7 @@ export default function ResultPage({
                 </p>
 
                 <h2 className="text-3xl font-bold">
-                  {auditData.useCase}
+                  {auditData.use_case}
                 </h2>
 
               </div>
@@ -158,14 +160,7 @@ export default function ResultPage({
 
                   $
 
-                  {auditData.tools.reduce(
-                    (
-                      total: number,
-                      tool: any
-                    ) =>
-                      total + tool.spend,
-                    0
-                  )}
+                  {auditData.total_monthly_spend}
 
                 </h2>
 

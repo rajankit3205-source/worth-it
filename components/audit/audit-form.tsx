@@ -30,6 +30,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { supabase } from "@/lib/supabase";
+import { runAudit } from "@/engine/audit-engine";
+
 const formSchema = z.object({
   teamSize: z.coerce.number().min(1),
 
@@ -102,14 +105,66 @@ export default function AuditForm() {
 
   const router = useRouter();
 
-  function onSubmit(data: FormValues) {
+  async function onSubmit(data: FormValues) {
 
     const auditId = uuidv4();
 
-    localStorage.setItem(
-      `audit-${auditId}`,
-      JSON.stringify(data)
-    );
+    const results =
+      runAudit(data.tools);
+
+    const totalMonthlySpend =
+      data.tools.reduce(
+        (total, tool) =>
+          total + tool.spend,
+        0
+      );
+
+    const totalMonthlySavings =
+      results.reduce(
+        (total, result) =>
+          total + result.monthlySavings,
+        0
+      );
+
+    const totalAnnualSavings =
+      results.reduce(
+        (total, result) =>
+          total + result.annualSavings,
+        0
+      );
+
+    const { error } =
+      await supabase
+        .from("audits")
+        .insert({
+          id: auditId,
+
+          team_size: data.teamSize,
+
+          use_case: data.useCase,
+
+          total_monthly_spend:
+            totalMonthlySpend,
+
+          monthly_savings:
+            totalMonthlySavings,
+
+          annual_savings:
+            totalAnnualSavings,
+
+          recommendations: results,
+
+          tools: data.tools,
+        });
+
+    if (error) {
+
+      console.error(error);
+
+      alert("Failed to save audit.");
+
+      return;
+    }
 
     router.push(`/results/${auditId}`);
   }

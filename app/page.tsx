@@ -74,6 +74,8 @@ export default function HomePage() {
 
           </Link>
 
+          <a href="#how-it-works">
+
           <Button
             variant="outline"
             size="lg"
@@ -83,6 +85,8 @@ export default function HomePage() {
             View Demo
 
           </Button>
+
+        </a>
 
         </div>
 
@@ -136,7 +140,7 @@ export default function HomePage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="px-8 pb-28 max-w-5xl mx-auto text-center">
+      <section id="how-it-works" className="px-8 pb-28 max-w-5xl mx-auto text-center">
 
         <h2 className="text-5xl font-bold mb-16">
           How It Works

@@ -50,7 +50,7 @@ const formSchema = z.object({
 
 
 
-const defaultValues: FormValues = {
+const defaultValues = {
   teamSize: 5,
   useCase: "Coding",
 

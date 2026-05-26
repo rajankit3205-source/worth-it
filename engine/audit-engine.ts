@@ -115,7 +115,10 @@ export function runAudit(
     const annualSavings =
       monthlySavings * 12;
       
-    if (monthlySavings === 0) {
+    if (
+      monthlySavings === 0 &&
+      recommendedPlan === tool.plan
+    ) {
 
       recommendedPlan = tool.plan;
 

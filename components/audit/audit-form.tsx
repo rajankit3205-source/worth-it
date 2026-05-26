@@ -107,67 +107,76 @@ export default function AuditForm() {
 
   async function onSubmit(data: any) {
 
-    const auditId = uuidv4();
+  const auditId = uuidv4();
 
-    const results =
-      runAudit(data.tools);
+  const results =
+    runAudit(data.tools);
 
-    const totalMonthlySpend =
-      data.tools.reduce(
-        (total, tool) =>
-          total + tool.spend,
-        0
-      );
+  const totalMonthlySpend =
+    data.tools.reduce(
+      (
+        total: number,
+        tool: any
+      ) =>
+        total + tool.spend,
+      0
+    );
 
-    const totalMonthlySavings =
-      results.reduce(
-        (total, result) =>
-          total + result.monthlySavings,
-        0
-      );
+  const totalMonthlySavings =
+    results.reduce(
+      (
+        total: number,
+        result: any
+      ) =>
+        total + result.monthlySavings,
+      0
+    );
 
-    const totalAnnualSavings =
-      results.reduce(
-        (total, result) =>
-          total + result.annualSavings,
-        0
-      );
+  const totalAnnualSavings =
+    results.reduce(
+      (
+        total: number,
+        result: any
+      ) =>
+        total + result.annualSavings,
+      0
+    );
 
-    const { error } =
-      await supabase
-        .from("audits")
-        .insert({
-          id: auditId,
+  const { error } =
+    await supabase
+      .from("audits")
+      .insert({
+        id: auditId,
 
-          team_size: data.teamSize,
+        team_size: data.teamSize,
 
-          use_case: data.useCase,
+        use_case: data.useCase,
 
-          total_monthly_spend:
-            totalMonthlySpend,
+        total_monthly_spend:
+          totalMonthlySpend,
 
-          monthly_savings:
-            totalMonthlySavings,
+        monthly_savings:
+          totalMonthlySavings,
 
-          annual_savings:
-            totalAnnualSavings,
+        annual_savings:
+          totalAnnualSavings,
 
-          recommendations: results,
+        recommendations: results,
 
-          tools: data.tools,
-        });
+        tools: data.tools,
+      });
 
-    if (error) {
+  if (error) {
 
-      console.error(error);
+    console.error(error);
 
-      alert("Failed to save audit.");
+    alert("Failed to save audit.");
 
-      return;
-    }
-
-    router.push(`/results/${auditId}`);
+    return;
   }
+
+  router.push(`/results/${auditId}`);
+}
 
   return (
     <form

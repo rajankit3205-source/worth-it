@@ -1,6 +1,7 @@
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+
 import {
   BadgeDollarSign,
   Brain,
@@ -9,186 +10,232 @@ import {
 } from "lucide-react";
 
 export default function HomePage() {
+
   return (
-    <main className="min-h-screen bg-black text-white">
-      
+
+    <main className="min-h-screen bg-black text-white overflow-hidden">
+
       {/* NAVBAR */}
       <nav className="flex items-center justify-between px-8 py-6 border-b border-white/10">
+
         <h1 className="text-2xl font-bold tracking-tight">
           Worth-It
         </h1>
 
         <Link href="/audit">
-          <Button className="rounded-full">
+
+          <Button className="rounded-full px-6 transition-all hover:scale-105">
+
             Run Audit
+
           </Button>
+
         </Link>
+
       </nav>
 
       {/* HERO */}
-      <section className="px-8 py-24 text-center max-w-5xl mx-auto">
-        <div className="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm text-gray-300 mb-6">
-          AI Spend Optimization for Startups
-        </div>
+      <section className="px-8 py-28 text-center max-w-6xl mx-auto">
 
-        <h1 className="text-6xl font-bold tracking-tight leading-tight">
-          Stop Overpaying <br />
-          for AI Tools
-        </h1>
+        <p className="mb-6 inline-flex items-center rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-sm text-green-300">
 
-        <p className="text-gray-400 text-xl mt-6 max-w-2xl mx-auto">
-          Audit your AI stack, uncover hidden overspending,
-          and discover cheaper alternatives in seconds.
+          AI Spend Optimization Platform
+
         </p>
 
-        <div className="flex justify-center gap-4 mt-10">
+        <h1 className="text-6xl md:text-7xl font-bold tracking-tight leading-tight mb-8">
+
+          Stop Overspending
+          <br />
+
+          on AI Tools
+
+        </h1>
+
+        <p className="max-w-2xl mx-auto text-xl text-gray-400 leading-8 mb-10">
+
+          Audit your AI stack, uncover hidden overspending,
+          and discover optimization opportunities in seconds.
+
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+
           <Link href="/audit">
+
             <Button
               size="lg"
-              className="rounded-full px-8"
+              className="rounded-full px-10 py-7 text-lg transition-all hover:scale-105"
             >
+
               Start Free Audit
+
             </Button>
+
           </Link>
 
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full px-8 text-black"
+            className="rounded-full px-10 py-7 text-lg border-white/20 bg-white text-black hover:bg-gray-200 transition-all hover:scale-105"
           >
+
             View Demo
+
           </Button>
+
         </div>
+
       </section>
 
       {/* FEATURES */}
-      <section className="grid md:grid-cols-3 gap-6 px-8 pb-24 max-w-6xl mx-auto">
-        
-        <Card className="bg-white/5 border-white/10 text-white">
-          <CardContent className="p-8">
-            <BadgeDollarSign className="mb-4 h-10 w-10" />
+      <section className="grid md:grid-cols-3 gap-6 px-8 pb-28 max-w-6xl mx-auto">
 
-            <h3 className="text-2xl font-semibold mb-3">
-              Spend Analysis
-            </h3>
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8 hover:bg-white/[0.07] transition">
 
-            <p className="text-gray-400">
-              Detect overpriced AI plans and identify
-              unnecessary spending across your stack.
-            </p>
-          </CardContent>
-        </Card>
+          <BadgeDollarSign className="mb-6 h-12 w-12 text-green-400" />
 
-        <Card className="bg-white/5 border-white/10 text-white">
-          <CardContent className="p-8">
-            <TrendingDown className="mb-4 h-10 w-10" />
+          <h3 className="text-2xl font-semibold mb-4">
+            Spend Analysis
+          </h3>
 
-            <h3 className="text-2xl font-semibold mb-3">
-              Savings Recommendations
-            </h3>
+          <p className="text-gray-400 leading-7">
+            Detect overpriced AI plans and uncover unnecessary operational spend across your tooling stack.
+          </p>
 
-            <p className="text-gray-400">
-              Get actionable recommendations with monthly
-              and annual savings estimates instantly.
-            </p>
-          </CardContent>
-        </Card>
+        </div>
 
-        <Card className="bg-white/5 border-white/10 text-white">
-          <CardContent className="p-8">
-            <Brain className="mb-4 h-10 w-10" />
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8 hover:bg-white/[0.07] transition">
 
-            <h3 className="text-2xl font-semibold mb-3">
-              AI-Powered Insights
-            </h3>
+          <TrendingDown className="mb-6 h-12 w-12 text-blue-400" />
 
-            <p className="text-gray-400">
-              Receive personalized summaries generated
-              specifically for your startup stack.
-            </p>
-          </CardContent>
-        </Card>
+          <h3 className="text-2xl font-semibold mb-4">
+            Savings Recommendations
+          </h3>
+
+          <p className="text-gray-400 leading-7">
+            Receive actionable optimization recommendations with estimated monthly and annual savings.
+          </p>
+
+        </div>
+
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8 hover:bg-white/[0.07] transition">
+
+          <Brain className="mb-6 h-12 w-12 text-purple-400" />
+
+          <h3 className="text-2xl font-semibold mb-4">
+            AI Executive Insights
+          </h3>
+
+          <p className="text-gray-400 leading-7">
+            Generate intelligent executive summaries tailored to your startup's AI infrastructure.
+          </p>
+
+        </div>
+
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="px-8 pb-24 max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12">
+      <section className="px-8 pb-28 max-w-5xl mx-auto text-center">
+
+        <h2 className="text-5xl font-bold mb-16">
           How It Works
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10">
 
-          <div>
-            <div className="text-5xl font-bold text-gray-500 mb-4">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+
+            <div className="text-5xl font-bold text-gray-600 mb-6">
               01
             </div>
 
-            <h3 className="text-xl font-semibold mb-2">
+            <h3 className="text-2xl font-semibold mb-4">
               Enter Your Stack
             </h3>
 
-            <p className="text-gray-400">
-              Add your AI tools, plans, seats, and spend.
+            <p className="text-gray-400 leading-7">
+              Add your AI tools, subscriptions, seat counts, and monthly spend.
             </p>
+
           </div>
 
-          <div>
-            <div className="text-5xl font-bold text-gray-500 mb-4">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+
+            <div className="text-5xl font-bold text-gray-600 mb-6">
               02
             </div>
 
-            <h3 className="text-xl font-semibold mb-2">
-              Run Audit
+            <h3 className="text-2xl font-semibold mb-4">
+              Run Intelligent Audit
             </h3>
 
-            <p className="text-gray-400">
-              Our engine analyzes inefficiencies and alternatives.
+            <p className="text-gray-400 leading-7">
+              Worth-It analyzes pricing inefficiencies and optimization opportunities.
             </p>
+
           </div>
 
-          <div>
-            <div className="text-5xl font-bold text-gray-500 mb-4">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+
+            <div className="text-5xl font-bold text-gray-600 mb-6">
               03
             </div>
 
-            <h3 className="text-xl font-semibold mb-2">
-              Save Money
+            <h3 className="text-2xl font-semibold mb-4">
+              Reduce AI Costs
             </h3>
 
-            <p className="text-gray-400">
-              Reduce AI costs and optimize your stack instantly.
+            <p className="text-gray-400 leading-7">
+              Implement recommendations and improve your AI spend efficiency instantly.
             </p>
+
           </div>
 
         </div>
+
       </section>
 
-      {/* CTA */}
-      <section className="px-8 pb-32 text-center">
-        <div className="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-white/5 p-16">
-          
-          <Sparkles className="mx-auto mb-6 h-12 w-12" />
+      {/* FINAL CTA */}
+      <section className="px-8 pb-32">
 
-          <h2 className="text-4xl font-bold mb-4">
-            Your AI Stack Might Be Overpriced
+        <div className="max-w-5xl mx-auto rounded-[32px] border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-16 text-center">
+
+          <Sparkles className="mx-auto mb-8 h-14 w-14 text-yellow-400" />
+
+          <h2 className="text-5xl font-bold mb-6 leading-tight">
+
+            Your AI Stack Might
+            <br />
+
+            Be Overpriced
+
           </h2>
 
-          <p className="text-gray-400 text-lg mb-8">
-            Discover hidden savings opportunities in under 60 seconds.
+          <p className="text-gray-400 text-xl max-w-2xl mx-auto leading-8 mb-10">
+
+            Discover hidden optimization opportunities and reduce unnecessary AI spending in under 60 seconds.
+
           </p>
 
           <Link href="/audit">
+
             <Button
               size="lg"
-              className="rounded-full px-10"
+              className="rounded-full px-12 py-7 text-lg transition-all hover:scale-105"
             >
+
               Run Free Audit
+
             </Button>
+
           </Link>
 
         </div>
+
       </section>
 
     </main>
+
   );
 }

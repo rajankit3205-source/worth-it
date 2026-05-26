@@ -48,7 +48,7 @@ const formSchema = z.object({
   ),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+
 
 const defaultValues: FormValues = {
   teamSize: 5,
@@ -66,7 +66,7 @@ const defaultValues: FormValues = {
 
 export default function AuditForm() {
 
-  const form = useForm<FormValues>({
+  const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
@@ -105,7 +105,7 @@ export default function AuditForm() {
 
   const router = useRouter();
 
-  async function onSubmit(data: FormValues) {
+  async function onSubmit(data: any) {
 
     const auditId = uuidv4();
 
